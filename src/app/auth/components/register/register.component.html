@@ -1,0 +1,141 @@
+<section id="register">
+  <div class="auth-form py-5">
+    <div class="text-center">
+      <img src="../../../assets/images/logo.svg" alt="logo" />
+    </div>
+    <div class="px-5">
+      <h2>Register</h2>
+      <p>Welcome Back! Please enter your details</p>
+
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm)">
+        <div class="row">
+          <div class="col-6">
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1"
+                ><i class="fa-solid fa-mobile-screen"></i
+              ></span>
+              <input
+                formControlName="userName"
+                type="UserName"
+                class="form-control"
+                placeholder="UserName"
+                aria-label="Username"
+                aria-describedby="basic-addon1"
+              />
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1"
+                ><i class="fa-solid fa-mobile-screen"></i
+              ></span>
+              <input
+                formControlName="email"
+                type="email"
+                class="form-control"
+                placeholder="Enter Your Email"
+                aria-label="Username"
+                aria-describedby="basic-addon1"
+              />
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1"
+                ><i class="fa-solid fa-mobile-screen"></i
+              ></span>
+              <input
+                formControlName="country"
+                type="text"
+                class="form-control"
+                placeholder="country"
+                aria-label="Username"
+                aria-describedby="basic-addon1"
+              />
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1"
+                ><i class="fa-solid fa-mobile-screen"></i
+              ></span>
+              <input
+                formControlName="phoneNumber"
+                type="number"
+                class="form-control"
+                placeholder="phoneNumber"
+                aria-label="Username"
+                aria-describedby="basic-addon1"
+              />
+            </div>
+          </div>
+              <div class="col-6">
+                <div class="input-group mb-3 postion-relative">
+                  <span class="input-group-text" id="basic-addon1"
+                    ><i class="fa-solid fa-lock"></i
+                  ></span>
+                  <input
+                    formControlName="password"
+                    [type]="hide ? 'password' : 'text'"
+                    class="form-control"
+                    placeholder="Password"
+                    aria-label="Username"
+                    aria-describedby="basic-addon1"
+                  />
+                  <!-- <a class="show-password" (click)="togglePassword()"><i class="fa-solid fa-eye"></i></a> -->
+                  <a class="show-password" (click)="this.hide = !this.hide">
+                    <i class="fa-solid" [class]="hide ? 'fa-eye-slash' : 'fa-eye'"></i>
+        
+                    <!-- <i *ngIf="!hide" class="fa-solid fa-eye"></i>
+                <i *ngIf="this.hide==false" class="fa-solid fa-eye"></i>
+                <i *ngIf="this.hide==true" class="fa-solid fa-eye-slash"></i> -->
+                  </a>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="input-group mb-3 postion-relative">
+                  <span class="input-group-text" id="basic-addon1"
+                    ><i class="fa-solid fa-lock"></i
+                  ></span>
+                  <input
+                    formControlName="confirmPassword"
+                    [type]="confirmhide ? 'password' : 'text'"
+                    class="form-control"
+                    placeholder="Confirm Password"
+                    aria-label="Username"
+                    aria-describedby="basic-addon1"
+                  />
+                  <!-- <a class="show-password" (click)="togglePassword()"><i class="fa-solid fa-eye"></i></a> -->
+                  <a class="show-password" (click)="this.confirmhide = !this.confirmhide">
+                    <i class="fa-solid" [class]="confirmhide ? 'fa-eye-slash' : 'fa-eye'"></i>
+        
+                    <!-- <i *ngIf="!hide" class="fa-solid fa-eye"></i>
+                <i *ngIf="this.hide==false" class="fa-solid fa-eye"></i>
+                <i *ngIf="this.hide==true" class="fa-solid fa-eye-slash"></i> -->
+                  </a>
+                </div>
+              </div>
+  
+
+        </div>
+       
+
+        <div class="d-flex justify-content-end pt-2 pb-4">
+          <a class="text-decoration-none text text-main"
+            >Register Now?</a
+          >
+    
+        </div>
+        <button
+            [disabled]="registerForm.invalid" 
+          class="btn w-100 bg-main text-white"
+        >
+          <span *ngIf="isLoading == false">Register </span>
+          <span *ngIf="isLoading == true"
+            ><i class="fa-solid fa-spinner fa-spin text-white"></i
+          ></span>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
