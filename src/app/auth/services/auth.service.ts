@@ -18,7 +18,7 @@ export class AuthService {
       
   }
 
-  onRegister(data: AuthLogin): Observable<any> {
+  onRegister(data: any): Observable<any> {
     return this._httpClient.post("Users/Register" ,data)
     
   }

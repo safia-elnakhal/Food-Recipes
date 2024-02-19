@@ -8,7 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http'
 import { SharedModule } from '../shared/shared.module';
 import { RegisterComponent } from './components/register/register.component';
-
+import { NgxDropzoneModule } from 'ngx-dropzone';
 
 @NgModule({
   declarations: [AuthComponent ,LoginComponent ,RegisterComponent],
@@ -18,7 +18,8 @@ import { RegisterComponent } from './components/register/register.component';
     AuthRoutingModule,
     ReactiveFormsModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxDropzoneModule
   ],
   
 })

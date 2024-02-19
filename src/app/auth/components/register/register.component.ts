@@ -44,8 +44,19 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(data: FormGroup) {
     this.isLoading = true;
+
+    let myData = new FormData();
+    myData.append('userName', data.value.userName);
+    myData.append('email', data.value.email);
+    myData.append('country', data.value.country);
+    myData.append('phoneNumber', data.value.phoneNumber);
+    myData.append('password', data.value.password);
+    myData.append('confirmPassword', data.value.confirmPassword);
+
+
+    console.log(myData.get('userName'));
     console.log(data.value);
-    this._AuthService.onRegister(data.value).subscribe({
+    this._AuthService.onRegister(myData).subscribe({
       next: (res) => {
         console.log(res);
       },
@@ -60,6 +71,16 @@ export class RegisterComponent implements OnInit {
       },
     });
   }
+  files: File[] = [];
 
+  onSelect(event:any) {
+    console.log(event);
+    this.files.push(...event.addedFiles);
+  }
+  
+  onRemove(event:any) {
+    console.log(event);
+    this.files.splice(this.files.indexOf(event), 1);
+  }
 
 }
