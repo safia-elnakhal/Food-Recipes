@@ -5,6 +5,7 @@ import { AuthService } from '../../services/auth.service';
 import { ResetPasswordComponent } from '../reset-password/reset-password.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { PopUpResetPasswordComponent } from '../pop-up-reset-password/pop-up-reset-password.component';
 
 @Component({
   selector: 'app-forget-password',
@@ -36,7 +37,7 @@ export class ForgetPasswordComponent {
     this._AuthService.onForgetPassword(data.value).subscribe({
       next: (res) => {
         console.log(res);
-         this._Router.navigate(['auth/reset-password'])
+        //  this._Router.navigate(['auth/reset-password'])
    
       },
       error: (err) => {
@@ -52,13 +53,13 @@ export class ForgetPasswordComponent {
     });
   }
 
-  openDialog() {
-    if (this.forgetPassword.valid) {
-      const dialogRef = this.dialog.open(ResetPasswordComponent, {
-        data: { name: '' },
-      });
-    } else {
-      this.toastr.error('Please enter a valid email address', 'Error');
-    }
-  }
+  // openDialog() {
+  //   if (this.forgetPassword.valid) {
+  //     const dialogRef = this.dialog.open(PopUpResetPasswordComponent, {
+  //       data: { email: this.forgetPassword.value},
+  //     });
+  //   } else {
+  //     this.toastr.error('Please enter a valid email address', 'Error');
+  //   }
+  // }
 }

@@ -1,34 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../services/auth.service';
-import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
-
+import { VerifyAcountComponent } from '../verify-acount/verify-acount.component';
 
 @Component({
-  selector: 'app-reset-password',
-  templateUrl: './reset-password.component.html',
-  styleUrls: ['./reset-password.component.scss']
+  selector: 'app-pop-up-reset-password',
+  templateUrl: './pop-up-reset-password.component.html',
+  styleUrls: ['./pop-up-reset-password.component.scss']
 })
-export class ResetPasswordComponent {
+export class PopUpResetPasswordComponent {
+
   hide: boolean = true;
   confirmhide: boolean = true;
   isLoading: boolean = false;
   
-  emailReset = localStorage.getItem('emailReset');
-  
-  constructor(private _Router:Router,
+  constructor(public dialogRef: MatDialogRef<VerifyAcountComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: { email: string }
+    ,public _Router:Router,
     private _AuthService: AuthService,
-    private toastr: ToastrService,
-
-  ) {}
-  ngOnInit() {
-  }
+    private toastr: ToastrService,) { }
 
   resetPasswordForm = new FormGroup({
 
-    email: new FormControl(this.emailReset, [Validators.required, Validators.email]),
+    email: new FormControl(null, [Validators.required, Validators.email]),
     seed: new FormControl(null,[Validators.required]),
     password: new FormControl(null, [ Validators.required,
       Validators.pattern(
@@ -58,6 +55,9 @@ export class ResetPasswordComponent {
       }
     })
   }
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
-   
+ // seed incorrect  ??    //send email in input   ??
+}
