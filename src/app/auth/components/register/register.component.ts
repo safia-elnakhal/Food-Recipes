@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../services/auth.service';
+import { VerifyAcountComponent } from '../verify-acount/verify-acount.component';
+import { MatDialog } from '@angular/material/dialog';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -10,17 +13,19 @@ import { AuthService } from '../../services/auth.service';
 })
 export class RegisterComponent implements OnInit {
 
-  ngOnInit() {
-  }
+ 
   hide: boolean = true;
   confirmhide: boolean = true;
   isLoading: boolean = false;
+  imgSrc: any;
 
-  constructor(
+  constructor(private _Router:Router,
     private _AuthService: AuthService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    public dialog: MatDialog
   ) {}
-
+  ngOnInit() {
+  }
 
   registerForm = new FormGroup({
     userName : new FormControl(null, [Validators.required,]),
@@ -38,8 +43,7 @@ export class RegisterComponent implements OnInit {
       Validators.pattern(
         '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,16}$'
       ),
-    ]),
-  
+    ]),  
   });
 
   onSubmit(data: FormGroup) {
@@ -52,10 +56,11 @@ export class RegisterComponent implements OnInit {
     myData.append('phoneNumber', data.value.phoneNumber);
     myData.append('password', data.value.password);
     myData.append('confirmPassword', data.value.confirmPassword);
-
+    myData.append('profileImage', this.imgSrc);
 
     console.log(myData.get('userName'));
     console.log(data.value);
+
     this._AuthService.onRegister(myData).subscribe({
       next: (res) => {
         console.log(res);
@@ -75,6 +80,8 @@ export class RegisterComponent implements OnInit {
 
   onSelect(event:any) {
     console.log(event);
+    this.imgSrc=event.addedFiles[0];
+    console.log(this.imgSrc)
     this.files.push(...event.addedFiles);
   }
   
@@ -83,4 +90,40 @@ export class RegisterComponent implements OnInit {
     this.files.splice(this.files.indexOf(event), 1);
   }
 
+
+  openDialog() {
+    const dialogRef = this.dialog.open(VerifyAcountComponent, {
+      data: { name: '' },
+    });
+
+    dialogRef.afterClosed().subscribe(result=> {
+      console.log('The dialog was closed' ,result);
+      if (result) {
+         this.onVerifyAccount(result)
+      } else {
+         console.log("code incorrect");
+         this.toastr.success('Account Activated UnSuccessfully', 'failed');
+         
+       }
+    });
+
+
+  }
+
+  onVerifyAccount(data: any) {
+    this._AuthService.onVerify(data).subscribe({
+      next: (res) => {
+        console.log(res);
+        
+      }, error: (err) => {
+        
+      }, complete: () => {
+        this.toastr.success('Account Activated Successfully', 'Success');
+        this._Router.navigate(['auth/login'])
+      }
+    }
+
+    )
+    
+  }
 }

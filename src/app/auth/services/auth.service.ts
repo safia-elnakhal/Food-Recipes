@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { AuthLogin } from '../models/auth';
+
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +21,11 @@ export class AuthService {
   onRegister(data: any): Observable<any> {
     return this._httpClient.post("Users/Register" ,data)
     
+  }
+  onVerify(data: any): Observable<any>{
+    return  this._httpClient.put('Users/verify',data)
+    
+      
   }
 
 }

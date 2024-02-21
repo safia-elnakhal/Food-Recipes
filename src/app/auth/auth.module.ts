@@ -9,17 +9,18 @@ import {HttpClientModule} from '@angular/common/http'
 import { SharedModule } from '../shared/shared.module';
 import { RegisterComponent } from './components/register/register.component';
 import { NgxDropzoneModule } from 'ngx-dropzone';
+import { VerifyAcountComponent } from './components/verify-acount/verify-acount.component';
+import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 
 @NgModule({
-  declarations: [AuthComponent ,LoginComponent ,RegisterComponent],
+  declarations: [AuthComponent ,LoginComponent ,RegisterComponent, VerifyAcountComponent, ForgetPasswordComponent],
 
   imports: [
     CommonModule,
     AuthRoutingModule,
-    ReactiveFormsModule,
     SharedModule,
     HttpClientModule,
-    NgxDropzoneModule
+    NgxDropzoneModule,
   ],
   
 })
