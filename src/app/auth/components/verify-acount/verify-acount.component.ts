@@ -13,7 +13,7 @@ export class VerifyAcountComponent {
     code: new  FormControl(null)
     })
   constructor(public dialogRef: MatDialogRef<VerifyAcountComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any  ) {
+    @Inject(MAT_DIALOG_DATA) public data: any  ){
       
     }
     onNoClick(): void {

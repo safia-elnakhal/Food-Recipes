@@ -70,7 +70,7 @@ button{
   border-radius: 8px;
   padding: 10px 8px;
   font-family: "Inter";
-font-size: 20px;
+font-size: 30px;
 font-weight: 700;
 line-height: 24px;
 
@@ -113,3 +113,13 @@ line-height: 24px;
 .bg-custom-dark{
   background-color: rgba(58, 58, 61, 1)!important;
 }
+.form-control {
+  background-color: #f8f9fa !important;
+  border: none;
+}
+.input-group-text{
+  padding: 20px;
+  border-right-color: black !important;
+  border: none;
+}
+ 

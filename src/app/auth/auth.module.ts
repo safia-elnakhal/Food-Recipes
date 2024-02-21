@@ -11,9 +11,10 @@ import { RegisterComponent } from './components/register/register.component';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { VerifyAcountComponent } from './components/verify-acount/verify-acount.component';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 @NgModule({
-  declarations: [AuthComponent ,LoginComponent ,RegisterComponent, VerifyAcountComponent, ForgetPasswordComponent],
+  declarations: [AuthComponent ,LoginComponent ,RegisterComponent, VerifyAcountComponent, ForgetPasswordComponent, ResetPasswordComponent],
 
   imports: [
     CommonModule,

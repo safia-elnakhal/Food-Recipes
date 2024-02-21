@@ -102,7 +102,7 @@ export class RegisterComponent implements OnInit {
          this.onVerifyAccount(result)
       } else {
          console.log("code incorrect");
-         this.toastr.success('Account Activated UnSuccessfully', 'failed');
+         this.toastr.error('Account Activated UnSuccessfully', 'failed');
          
        }
     });
@@ -114,9 +114,9 @@ export class RegisterComponent implements OnInit {
     this._AuthService.onVerify(data).subscribe({
       next: (res) => {
         console.log(res);
-        
+  
       }, error: (err) => {
-        
+        this.toastr.error(err.error.message, 'failed');
       }, complete: () => {
         this.toastr.success('Account Activated Successfully', 'Success');
         this._Router.navigate(['auth/login'])

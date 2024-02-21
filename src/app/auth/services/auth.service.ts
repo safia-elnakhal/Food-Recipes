@@ -27,5 +27,12 @@ export class AuthService {
     
       
   }
-
+  onForgetPassword(data:any) {
+    return  this._httpClient.post('Users/Reset/Request',data)
+    
+  }
+  onResetPassword(data:any) {
+    return  this._httpClient.post('Users/Reset/Request',data)
+    
+  }
 }
