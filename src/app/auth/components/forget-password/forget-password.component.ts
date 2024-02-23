@@ -37,7 +37,7 @@ export class ForgetPasswordComponent {
     this._AuthService.onForgetPassword(data.value).subscribe({
       next: (res) => {
         console.log(res);
-        //  this._Router.navigate(['auth/reset-password'])
+          this._Router.navigate(['auth/reset-password'])
    
       },
       error: (err) => {
