@@ -2,15 +2,39 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthLogin } from '../models/auth';
+import { jwtDecode } from 'jwt-decode';
+import { Router } from '@angular/router';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
-  constructor(private _httpClient: HttpClient) { 
+ // token= localStorage.getItem('userToken')
+  role: string |any ='';
+  constructor(private _httpClient: HttpClient,
+              private _Router:Router
+  ) { 
+    if (localStorage.getItem('userToken')!==null) {
+      console.log(this.getProfile());
+    }
    
+    
+  }
+
+  getProfile() {
+    let encoded: any =localStorage.getItem('userToken');
+    let decoded: any = jwtDecode(encoded);
+    localStorage.setItem('userRole', decoded.userGroup);
+    localStorage.setItem('userName', decoded.userName);
+    console.log(decoded);
+    this.getRole();
+    
+  }
+  getRole() {
+    if (localStorage.getItem('userToken')!== null && localStorage.getItem('userRole')!== null) {
+      this.role = localStorage.getItem('userRole');
+    }
   }
   onLogin(data: AuthLogin): Observable<any>{
     return  this._httpClient.post('Users/Login',data)
@@ -35,4 +59,11 @@ export class AuthService {
     return  this._httpClient.post('Users/Reset/Request',data)
     
   }
+  logOut() {
+    localStorage.removeItem('userToken');
+    localStorage.removeItem('userRole');
+    localStorage.removeItem('userName');
+    this._Router.navigate(['/auth/login'])
+  }
+
 }

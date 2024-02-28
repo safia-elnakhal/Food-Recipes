@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { ToastrService } from 'ngx-toastr'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +15,7 @@ export class LoginComponent {
 
   constructor(
     private _AuthService: AuthService,
+    private _Router:Router,
     private toastr: ToastrService
   ) {}
 
@@ -45,6 +47,8 @@ export class LoginComponent {
     this._AuthService.onLogin(data.value).subscribe({
       next: (res) => {
         console.log(res);
+        localStorage.setItem('userToken', res.token);
+        this._AuthService.getProfile();
       },
       error: (err) => {
         this.isLoading = false;
@@ -53,6 +57,7 @@ export class LoginComponent {
       },
       complete: () => {
         this.isLoading = false;
+        this._Router.navigate(['/dashboard'])
         this.toastr.success('LoggedIn', 'Success');
       },
     });
