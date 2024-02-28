@@ -9,7 +9,7 @@
             <ng-container *ngFor=" let item of Menu">
                 
                 <li *ngIf="item.isActive"   > 
-            <a  [routerLink]="item.link" routerLinkActive="bg-main-transparent line-style" >
+            <a  [routerLink]="item.link" routerLinkActive="bg-main-transparent line-style active-link" >
                 <!-- <span class="line-style">|</span> -->
                 <span><i [class]="item.icon"></i></span>
                 <span class="text-capitalize">{{item.text}}</span>

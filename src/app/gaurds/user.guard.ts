@@ -12,7 +12,7 @@ export class UserGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if (localStorage.getItem('userToken') !==null && localStorage.getItem('userRole') !=='SystemUser') {
+      if (localStorage.getItem('userToken') !==null && localStorage.getItem('userRole') =='SystemUser') {
         return true;
         
       } else {

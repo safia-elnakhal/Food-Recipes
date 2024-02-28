@@ -15,7 +15,7 @@ export class GlobalInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('userToken');
     const baseUrl: string = 'https://upskilling-egypt.com:443/api/v1/';
 
     let newRequest = request.clone();
@@ -23,7 +23,7 @@ export class GlobalInterceptor implements HttpInterceptor {
     if (token !== null) {
       newRequest = newRequest.clone({
         setHeaders: {
-          authorization: `Bearer ${token}`,
+          'Authorization': `Bearer ${token}`,
         }
        
       });
