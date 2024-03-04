@@ -10,7 +10,7 @@ import { ICategory } from '../../models/category';
 export class CategoriesComponent implements OnInit{
   
   tableData: ICategory[] = [];
-  
+  tableResponse: any;
   constructor(private _CategoryService: CategoryService) {
    
   }
@@ -21,7 +21,9 @@ export class CategoriesComponent implements OnInit{
     this._CategoryService.getAllCategories().subscribe({
       next: (res) => {
         console.log(res);
-        this.tableData=res.data
+        this.tableResponse=res
+       //or==> this.tableData = res.data;
+        this.tableData=this.tableResponse.data
       }, error: (err) => {
         console.log(err);
         
