@@ -57,8 +57,10 @@ export class LoginComponent {
       },
       complete: () => {
         this.isLoading = false;
-        this._Router.navigate(['/dashboard'])
+     
         this.toastr.success('LoggedIn', 'Success');
+
+        this._Router.navigate(['/dashboard/home'])
       },
     });
   }

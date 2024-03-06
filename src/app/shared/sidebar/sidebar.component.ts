@@ -41,21 +41,21 @@ export class SidebarComponent {
     {
     
       text: 'Users',
-      link: 'users',
+      link: '/dashboard/admin/users',
       icon: 'fa-solid fa-users',
       isActive: this.isAdmin()  ,
     },
     {
     
       text: 'Recipes',
-      link: 'Recipes',
+      link: '/dashboard/admin/recipes',
       icon: 'fa-solid fa-users',
       isActive: this.isAdmin()  ,
     },
     {
     
       text: 'Categories',
-      link: 'Categories',
+      link: '/dashboard/admin/category',
       icon: 'fa-regular fa-calendar-days',
       isActive: this.isAdmin()  ,
     },
