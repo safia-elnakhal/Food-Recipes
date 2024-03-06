@@ -131,3 +131,23 @@ line-height: 24px;
 .my-pointer{
   cursor: pointer;
 }
+.header-page{
+   background-image: url(../src/assets/images/header-bg-svg.png);
+   background-position: center center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   height: 22vh;
+   padding: 5px 50px;
+   margin-left:0px;
+   width: 100%;
+   
+   margin-bottom: 20px;
+   border-radius: 16px;
+   color: white;
+   
+   img{
+    padding-top: 20px;
+      width:40%;
+   }
+ 
+} 

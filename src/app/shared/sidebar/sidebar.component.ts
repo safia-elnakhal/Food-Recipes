@@ -49,14 +49,14 @@ export class SidebarComponent {
     
       text: 'Recipes',
       link: '/dashboard/admin/recipes',
-      icon: 'fa-solid fa-users',
+      icon: "fa-solid fa-utensils",
       isActive: this.isAdmin()  ,
     },
     {
     
       text: 'Categories',
       link: '/dashboard/admin/category',
-      icon: 'fa-regular fa-calendar-days',
+      icon: "fa-solid fa-layer-group",
       isActive: this.isAdmin()  ,
     },
     {

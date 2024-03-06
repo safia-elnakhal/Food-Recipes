@@ -11,6 +11,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { RouterModule } from '@angular/router';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { DeleteComponent } from './delete/delete.component';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { DeleteComponent } from './delete/delete.component';
     MatMenuModule,
     MatButtonModule,
     RouterModule,
+    MatSelectModule,
     MatPaginatorModule,
     FormsModule
   ]
@@ -39,7 +41,8 @@ import { DeleteComponent } from './delete/delete.component';
     MatMenuModule,
     MatButtonModule,
     MatPaginatorModule,
-    FormsModule
+    FormsModule,
+    MatSelectModule
   ]
 })
 export class SharedModule { }

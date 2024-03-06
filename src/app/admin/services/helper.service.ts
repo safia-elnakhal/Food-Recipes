@@ -5,13 +5,12 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class RecipesService {
+export class HelperService {
 
   constructor(private _HttpClient:HttpClient ) {}
 
-  getAllRecipes(paramsApi:any): Observable<any> {
-    return this._HttpClient.get('Recipe', {params: paramsApi})
+  getTags(): Observable<any> {
+    return this._HttpClient.get('tag')
   }
-
 
 }

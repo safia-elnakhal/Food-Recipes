@@ -6,20 +6,9 @@ import { AdminComponent } from './admin.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { SharedModule } from '../shared/shared.module';
 import { AddEditCategoryComponent } from './components/add-edit-category/add-edit-category.component';
-import { RecipesComponent } from './components/recipes/recipes.component';
-
 
 @NgModule({
-  declarations: [
-    AdminComponent,
-    CategoriesComponent,
-    AddEditCategoryComponent,
-    RecipesComponent
-  ],
-  imports: [
-    CommonModule,
-    AdminRoutingModule, 
-    SharedModule
-  ],
+  declarations: [AdminComponent, CategoriesComponent, AddEditCategoryComponent],
+  imports: [CommonModule, AdminRoutingModule, SharedModule],
 })
-export class AdminModule { }
+export class AdminModule {}

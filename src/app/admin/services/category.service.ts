@@ -13,6 +13,10 @@ export class CategoryService {
     return this._HttpClient.get('Category' ,{params:{pageSize:x ,pageNumber:y ,name:z}})
   }
 
+  getAllCategoriesWithoutPagination(): Observable<any> {
+    return this._HttpClient.get('Category')
+  }
+
 
   onAddCategory(data:string):Observable<any>{
     return this._HttpClient.post('Category' ,{name :data })
