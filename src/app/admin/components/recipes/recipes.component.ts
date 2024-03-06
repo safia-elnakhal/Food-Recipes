@@ -17,10 +17,15 @@ import { ITag } from '../../models/itag';
   styleUrls: ['./recipes.component.scss'],
 })
 export class RecipesComponent {
+
   tableData: IRecipes[] = [];
+
   tags: ITag[] |any = [];
   categories: ICategory[] | any = [];
   tagId: number = 0;
+  categoriesIds: number = 0;
+
+  
   tableResponse: any;
   searchKey: string = '';
 
@@ -42,7 +47,7 @@ export class RecipesComponent {
   ngOnInit(): void {
  
     this.getAllTags();
-  //  this.getAllCategories();
+  //  this.getAllCategoriesWithoutPagination();
     this.getRecipes();
 
   }
@@ -56,6 +61,7 @@ export class RecipesComponent {
       pageNamber: this.pageIndex,
       name: this.searchKey,
       tagId: this.tagId > 0 ? this.tagId : null,
+      categoriesIds:this.categoriesIds,
     };
     this._RecipesService.getAllRecipes(paramsApi).subscribe({
       next: (res) => {
