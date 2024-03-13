@@ -59,6 +59,10 @@ export class AuthService {
     return  this._httpClient.post('Users/Reset/Request',data)
     
   }
+  onChangePassword(data: any) {
+    return this._httpClient.put('Users/ChangePassword',data)
+    
+  }
   logOut() {
     localStorage.removeItem('userToken');
     localStorage.removeItem('userRole');
