@@ -1,0 +1,11 @@
+.img-style{
+    height: 70px;
+
+}
+.style{
+    width:10rem;
+
+}
+.mdc-text-field--outlined .mdc-notched-outline {
+   background-color:  #f8f9fa !important;
+} 

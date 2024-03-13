@@ -3,14 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { RecipesComponent } from './recipes.component';
 import { AddEditRecipesComponent } from './add-edit-recipes/add-edit-recipes.component';
 
-
 const routes: Routes = [
-    { path: '', component: RecipesComponent },
-    {path:'add' , component:AddEditRecipesComponent}
+  { path: '', component: RecipesComponent },
+  { path: 'add', component: AddEditRecipesComponent },
+  { path: 'edit/:id ', component: AddEditRecipesComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class RecipesRoutingModule { }
+export class RecipesRoutingModule {}

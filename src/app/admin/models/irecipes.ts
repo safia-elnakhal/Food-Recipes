@@ -1,16 +1,17 @@
-import { ICategory } from "./category";
-import { ITag } from "./itag";
+import { ICategory } from './category';
+import { ITag } from './itag';
 
 export interface IRecipes {
-    creationDate:string ;
-    id: number ;
-    modificationDate: string ;
-    name: string;
-    description: string;
+  creationDate: string;
+  id: number;
+  modificationDate: string;
+  name: string;
+  description: string;
     price: number;
-    tag:ITag;
-    imagePath: string;
-    category: ICategory[];
-
+    tagId: number[];
+    tag: ITag;
+  recipeImage: string;
+  imagePath: string;
+  category?: ICategory[];
+  categoriesIds: number[];
 }
-

@@ -1,0 +1,31 @@
+<section class="container p-5">
+    <a (click)="onNoClick()" class="d-block text-end my-pointer">
+        <i class="fa-regular fa-circle-xmark   text-success fw-light border-0 fs-4 fa-2x"></i>
+    </a>
+  
+  <div class=" text-center">
+    <img  *ngIf="!data.imagePath"
+    src="../../../../assets/images/defult-recipes.jpg" class="w-25" alt="">
+    <img *ngIf="data.imagePath"
+    [src]="imagePath + data.imagePath "
+    class="w-50 img-style"
+    alt=""
+  />
+    <h3> 
+      {{data.name?data.name:'Recipe Name'}}
+    </h3>
+    <p>{{data.description?data.description:'No Description'}}</p>
+  </div>
+  <hr>
+  <div class="text-end ">
+    <button class=" btn outline-main fw-light border-0 fs-5"
+     [mat-dialog-close]="data.id">Add To Favorites
+
+    </button>
+  
+
+
+  </div>
+
+
+</section>

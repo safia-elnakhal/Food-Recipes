@@ -1,22 +1,24 @@
-import { Component } from '@angular/core';
+import { RecipesDetailsComponent } from './../recipes-details/recipes-details.component';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
 import { ToastrService } from 'ngx-toastr';
+import { ICategory } from 'src/app/admin/models/category';
+import { IRecipes } from 'src/app/admin/models/irecipes';
+import { ITag } from 'src/app/admin/models/itag';
+import { CategoryService } from 'src/app/admin/services/category.service';
+import { HelperService } from 'src/app/admin/services/helper.service';
+import { RecipesService } from 'src/app/admin/services/recipes.service';
 import { DeleteComponent } from 'src/app/shared/delete/delete.component';
-import { ICategory } from '../../models/category';
-import { CategoryService } from '../../services/category.service';
-import { AddEditCategoryComponent } from '../add-edit-category/add-edit-category.component';
-import { RecipesService } from '../../services/recipes.service';
-import { IRecipes } from '../../models/irecipes';
-import { HelperService } from '../../services/helper.service';
-import { ITag } from '../../models/itag';
+import { UserService } from '../../services/user.service';
 
 @Component({
-  selector: 'app-recipes',
-  templateUrl: './recipes.component.html',
-  styleUrls: ['./recipes.component.scss'],
+  selector: 'app-user-recipes',
+  templateUrl: './user-recipes.component.html',
+  styleUrls: ['./user-recipes.component.css']
 })
-export class RecipesComponent {
+export class UserRecipesComponent implements OnInit {
+
 
   tableData: IRecipes[] = [];
 
@@ -38,6 +40,7 @@ export class RecipesComponent {
   pageEvent: PageEvent | any;
 
   constructor(
+    private _UserService:UserService,
     private _CategoryService: CategoryService,
     private _HelperService: HelperService,
     private _RecipesService: RecipesService,
@@ -49,6 +52,7 @@ export class RecipesComponent {
     this.getAllTags();
   //  this.getAllCategoriesWithoutPagination();
     this.getRecipes();
+ 
 
   }
   test() {
@@ -88,35 +92,7 @@ export class RecipesComponent {
     this.getRecipes();
   }
 
-  //  openAddCategoryDialog() {
-  //   const dialogRef = this.dialog.open(AddEditCategoryComponent, {});
 
-  //   dialogRef.afterClosed().subscribe((result) => {
-  //     console.log('The dialog was closed');
-  //     console.log(result);
-  //     //  let x = {name:result}
-  //     if (result) {
-  //       this.addCategory(result);
-  //     }
-  //   });
-  // }
-
-  // openEditCategoryDialog(CategoryData: any) {
-  //   console.log(CategoryData);
-
-  //   const dialogRef = this.dialog.open(AddEditCategoryComponent, {
-  //     data: CategoryData,
-  //   });
-
-  //   dialogRef.afterClosed().subscribe((result) => {
-  //     console.log('The dialog was closed');
-  //     console.log(result);
-  //     //  let x = {name:result}
-  //     if (result) {
-  //       this.editCategory(result);
-  //     }
-  //   });
-  // }
 
   openDeleteRecipeDialog(RecipeData: any) {
     console.log(RecipeData);
@@ -134,37 +110,7 @@ export class RecipesComponent {
       }
     });
   }
-  // addCategory(categoryName: string) {
-  //   this._RecipesService.onAddCategory(categoryName).subscribe({
-  //     next: (res) => {
-  //       console.log(res);
-  //       this.toastr.success('Category', ' Added Category Success');
-  //     },
-  //     error: (err) => {
-  //       console.log(err);
-  //       this.toastr.error('Category', ' Added Category field');
-  //     },
-  //     complete: () => {
-  //       this.getCategories();
-  //     },
-  //   });
-  // }
-
-  // editCategory(categoryItem: any) {
-  //   this._RecipesService.onEditCategory(categoryItem).subscribe({
-  //     next: (res) => {
-  //       console.log(res);
-  //       this.toastr.success('Category', ' Updated Category Success');
-  //     },
-  //     error: (err) => {
-  //       console.log(err);
-  //       this.toastr.error('Category', ' Updated Category field');
-  //     },
-  //     complete: () => {
-  //       this.getCategories();
-  //     },
-  //   });
-  // }
+ 
 
   deleteCategory(RecipeId: any) {
     this._RecipesService.onDeleteRecipes(RecipeId).subscribe({
@@ -198,4 +144,35 @@ export class RecipesComponent {
       },
     });
   }
+
+  
+  openRecipeDetails(item:any) {
+    const dialogRef = this.dialog.open(RecipesDetailsComponent, {
+      data: item,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+      console.log(result);
+      //  let x = {name:result}
+      if (result) {
+        // this.deleteCategory(result);
+      }
+    });
+  }
+  onAddFav(id: number) {
+    this._UserService.onAddFav(id).subscribe({
+      next: (res) => {
+        console.log(res);
+        
+      }, error: (err: any) => {
+        console.log(err);
+        this.toastr.error('Deleted Favorite Recipe');
+        
+      }, complete: () => {
+        this.toastr.success('Add Favorite Recipe', ' Add Favorite Recipe Success');
+      }
+    })
+  }
+
 }

@@ -61,18 +61,19 @@ export class SidebarComponent {
     },
     {
     
-      text: 'Favorite',
-      link: 'Categories',
-      icon: 'fa-regular fa-calendar-days',
+      text: 'UserRecipes',
+      link: '/dashboard/user/recipes',
+      icon: 'fa-solid fa-utensils',
       isActive: this.isUser()  ,
     },
     {
     
-      text: 'UserRecipes',
-      link: 'Categories',
-      icon: 'fa-regular fa-calendar-days',
+      text: 'Favorite',
+      link: '/dashboard/user/favorites',
+      icon: 'fa-solid fa-heart-circle-check',
       isActive: this.isUser()  ,
-    }
+    },
+
     
   ]
 

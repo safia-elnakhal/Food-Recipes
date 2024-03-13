@@ -1,0 +1,27 @@
+.item{
+   border-radius: 15px;
+   height: 40vh;
+}
+
+.item img{
+    width: 100%;
+    height: 60%;
+    border-radius:15px 15px 35px 35px  ;
+
+}
+.delete-icon{
+     width: 32px;
+     height: 32px;
+     border-radius: 8px;
+     background-color: #fff;
+     border: 2px solid rgba(31, 38, 62, 1);
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     position: absolute;
+     top:20px;
+     right:20px;
+}
+a{
+    cursor: pointer;
+}

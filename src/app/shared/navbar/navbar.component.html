@@ -11,13 +11,25 @@
           expand_more
           </mat-icon>
       </button>
+
       <mat-menu #menu="matMenu">
+        <button (click)="myLogout()" mat-menu-item>
+          <mat-icon>person</mat-icon>
+          <span>Profile</span>
+        </button>
+        <button (click)="myLogout()" mat-menu-item>
+          <mat-icon>lock_open</mat-icon>
+       
+          
+          <span>Change Password</span>
+        </button>
         <button (click)="myLogout()" mat-menu-item>
           <mat-icon>logout</mat-icon>
           <span>LogOut</span>
         </button>
   
       </mat-menu>
+   
       
     </div>
       </div>

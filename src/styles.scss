@@ -79,13 +79,28 @@ line-height: 24px;
   &.main{
     background-color: rgba(74, 163, 90, 1);
     color: #fff;
+    transition: all 1s ;
     :disabled{
       opacity: 0.5;
     }
+    &:hover{
+      color: rgba(74, 163, 90, 1);
+      background-color:#fff;
+      border: 1px solid  rgba(74, 163, 90, 1);
+    }
 
   }
-  &.second{
-  background-color: antiquewhite;
+  &.outline-main{
+color: rgba(74, 163, 90, 1);
+background-color: #fff;
+border: 1px solid  rgba(74, 163, 90, 1);
+transition: all 1s ;
+&:hover{
+  color: #fff;
+  background-color:rgba(74, 163, 90, 1);
+}
+
+
   }
 }
 .text{
