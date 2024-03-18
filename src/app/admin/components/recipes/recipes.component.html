@@ -64,7 +64,7 @@
         <mat-form-field class="w-100" appearance="outline">
           <mat-label>Categories</mat-label>
           <mat-select [(ngModel)]="categoriesIds"  (selectionChange)="getRecipes()">
-            <mat-option>All</mat-option>
+            <mat-option [value]="0">All</mat-option>
             <mat-option *ngFor="let item of categories" [value]="item.id">{{
               item.name
             }}</mat-option>

@@ -33,14 +33,17 @@ export class AddEditRecipesComponent implements OnInit {
     private _ActivatedRoute: ActivatedRoute,
     private router: Router
   ) {
-    console.log(_ActivatedRoute.url);
-    console.log(_ActivatedRoute.snapshot.params);
-    //console.log(_ActivatedRoute.snapshot.params['id']);
+   // console.log(_ActivatedRoute.url);
+    // console.log(_ActivatedRoute.snapshot.params);
+
+   console.log(_ActivatedRoute.snapshot.params['id']);
     this.recipeId = _ActivatedRoute.snapshot.params['id'];
   }
   ngOnInit(): void {
     this.getAllTags();
-    //   this.getAllCategoriesWithoutPagination();
+    this.getAllCategoriesWithoutPagination();
+    debugger
+    this.recipeId = this._ActivatedRoute.snapshot.params['id'];
     if (this.recipeId > 0) {
       this.getRecipeById(this.recipeId);
     }
@@ -68,7 +71,7 @@ export class AddEditRecipesComponent implements OnInit {
     this._CategoryService.getAllCategoriesWithoutPagination().subscribe({
       next: (res) => {
         console.log(res);
-        this.categories = res;
+        this.categories = res.data;
       },
     });
   }

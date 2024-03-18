@@ -47,7 +47,7 @@ export class RecipesComponent {
   ngOnInit(): void {
  
     this.getAllTags();
-  //  this.getAllCategoriesWithoutPagination();
+    this.getAllCategoriesWithoutPagination();
     this.getRecipes();
 
   }
@@ -194,7 +194,7 @@ export class RecipesComponent {
     this._CategoryService.getAllCategoriesWithoutPagination().subscribe({
       next: (res) => {
         console.log(res);
-        this.categories = res;
+        this.categories = res.data;
       },
     });
   }

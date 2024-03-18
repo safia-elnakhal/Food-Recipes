@@ -63,6 +63,10 @@ export class AuthService {
     return this._httpClient.put('Users/ChangePassword',data)
     
   }
+  onUpdateProfile(data: any) {
+    return this._httpClient.put('Users/',data)
+    
+  }
   logOut() {
     localStorage.removeItem('userToken');
     localStorage.removeItem('userRole');

@@ -14,9 +14,10 @@ import { ForgetPasswordComponent } from './components/forget-password/forget-pas
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { PopUpResetPasswordComponent } from './components/pop-up-reset-password/pop-up-reset-password.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
-  declarations: [AuthComponent ,LoginComponent ,RegisterComponent, VerifyAcountComponent, ForgetPasswordComponent, ResetPasswordComponent, PopUpResetPasswordComponent, ChangePasswordComponent],
+  declarations: [AuthComponent ,LoginComponent ,RegisterComponent, VerifyAcountComponent, ForgetPasswordComponent, ResetPasswordComponent, PopUpResetPasswordComponent, ChangePasswordComponent, ProfileComponent],
 
   imports: [
     CommonModule,
